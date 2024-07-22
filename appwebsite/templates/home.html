@@ -3,6 +3,42 @@
 
 
 {% block content %}
-<h1> Holaaaaa </h1>
+
+
+<div class='col-md-6 offset-md-3'> 
+
+{% comment %} Para determnar si un usuario asta logueado o no {% endcomment %}
+{% if user.is_authenticated  %}
+
+<h1> BIENVENIDO </h1>
+
+{% else %}
+
+
+    <h1> Login </h1>
+
+    {% comment %} para empezar a crear el form para el Login {% endcomment %}
+    <form method='POST' action={% url 'home' %} >
+        {% comment %} para ponerle mas seguridad a los hacker {% endcomment %}
+        {% csrf_token %}
+
+        {% comment %} Form {% endcomment %}
+            <div class="form-group">
+              <input type="text" class="form-control" name= 'username' placeholder='Username'>
+            </div>
+            <br/>
+            <div class="form-group">
+              <input type="password" class="form-control" name= 'password' placeholder='Password' required>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+
+
+
+</div>
+
+{% endif %}
+
 
 {% endblock  %}

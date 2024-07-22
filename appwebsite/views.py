@@ -1,12 +1,123 @@
 from django.shortcuts import render
 
+#importamos httpresponse para que lo devuelva en la visa 
+# from django.http import HttpResponse
+
+# Para redireccionar al a pantalla principal
+from django.shortcuts import redirect
+
 # Para la autentificacion 
 from django.contrib.auth import authenticate, login , logout
 
 #Mensaje al hacer un log in o un log out 
 from django.contrib import messages
 
+
+# imprtamos la clase que esa en el forms 
+from .forms import SignUpForm
+
+
+
+
+# ------------------------- HOME ----------------------------------#
+
 # Create your views here.
 
 def home(request):
-    return render (request, 'home.html', {})
+
+    # Chekear si esta logueado - 
+
+    #usando excepciones
+
+    # Cuando postean algo por eso el metodo POST
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        # Autenticar usuario para saber si es correcto o no 
+        user = authenticate(request, username=username, password=password)
+
+        #Para verificar que es valido usuario y que ha iniciado session
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Enhorabuena, has Iniciar Session!')
+
+            #Redirecionar a la pagina principal al iniciar session
+            return redirect('home')
+        else:
+            messages.error(request, 'Hubo un error al intentar iniciar session, Porfavor Intentalo de nuevo ')
+    # Pero cuando no postean nada 
+    
+    return render(request, "home.html", {})
+    
+# --------------------------- LOGIN --------------------------------#
+
+# ya l cree pero en la pagian principal
+# def login_user(request):
+#     pass
+# ---------------------------- LOGOUT -------------------------------#
+
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, 'Has cerrado session')
+
+    return redirect('home')
+
+
+
+# ---------------------------- REGISTER  O REGISTROS-------------------------------#
+
+def register_user(request):
+
+    #cuando estas o han rellenado el formulacio
+    if request.method == 'POST':
+
+        form = SignUpForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+
+            # autenticar usuario
+            username = form.cleaned_data['username'] # luego lo asigamos aser
+            password = form.cleaned_data['password1'] #luego se asigna como password simple a user 
+
+            user = authenticate(request, username=username, password= password)
+
+            # Verificar si user es valido  y no un None
+            if user is not None: 
+                #si funciona bien pues iniciamos session
+                login(request, user)
+
+                #al iniciar sesion que aparezca un mensaje
+                messages.success(request, 'Tu registro se ha realizado con exito')
+
+                #luego le devolvemos a la pagina principal
+                return redirect ('home')
+            # Verificar si user es None o NO ES VALIDO
+            else:
+                messages.error(request, 'Hubo un problema al iniciar sesión. Por favor, inténtalo de nuevo.')
+                return redirect('register')
+            
+        
+        #Si el formulario no es valido
+        else:
+            # Depuración: imprimir errores en la consola
+            print(form.errors)
+
+            messages.error(request, 'Por favor corrige los errores en tu formulario')
+            return render(request, 'register.html', {'form':form})
+        
+    # Si el método de la solicitud no es POST, renderizamos el formulario vacío
+    # para evitar : The view appwebsite.views.register_user didn't return an HttpResponse object. It returned None instead.
+    else:
+        form = SignUpForm()
+        return render(request, 'register.html', {'form':form})
+
+
+    
+
+
+    
+
+# ---------------------------- REGISTER  O REGISTROS-------------------------------#

@@ -1,7 +1,48 @@
 # CRM-CRUD
 
 
-#### Iniciar Secion en la base de datos 
+#### <!-- ----------------- Iniciar Secion en la base de datos  ---------------  -->
+
+
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME' : 'dbELA',
+        'USER' : 'root',
+        'PASSWORD' : 'mysql@123',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
+
+    }
+}
+
+#### <!-- -----------------SUPERUSER  ---------------  -->
+
+- ela
+- 123456789
+
+
+#### <!-- ----------------- URLs ---------------  -->
+
+urlpatterns = [
+    path('' , views.home, name='home'),
+    # si quiero crear una pagina separada de log in solo quitar el comentario
+    # path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
+]
+
+
+#### <!-- ----------------- AUTENTIFICACION ---------------  -->
+
+Para hacer los login y logout
+
+- Importar la autentificacion
+    > from django.contrib.auth import authenticate, login , logout
+
+- Importar para los mensajes al hacer un login o un logout 
+    > from django.contrib import messages
 
 
 
@@ -16,13 +57,29 @@
         
     - En vez de 
 
+- Siempre hay 3 pasos en DJANGO que siempre vas a necesitar 
+    - view o vista 
+    - Plantilla (ej : home.html)
+    - URL
+
+#### <!-- ----------------- REGISTRO DE USUARIOS ---------------  -->
+
+- Primero creamos la url - views - template 
+
+- Creamos el forms.py 
+
+- Completamos la logica de forms.py
+
+ - Si el método de la solicitud no es POST, renderizamos el formulario vacío
+    - -  para evitar : "The view appwebsite.views.register_user didn't return an HttpResponse object. It returned None instead."
+
+    else:
+        form = SignUpForm()
+    return render(request, 'register.html', {'form':form})
 
 
 
 
-#### <!-- ----------------- AUTENTIFICACION ---------------  -->
+    - Revisar bien los nombres de las variables que sean los mismo, porque si no lleva a un error faltal
 
-- Importar la autentificacion
-    > from django.contrib.auth import authenticate, login , logout
-- Importar para los mensajes al hacer un login o un logout 
-    > from django.contrib import messages
+
