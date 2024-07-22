@@ -4,6 +4,7 @@
 #### <!-- ----------------- Iniciar Secion en la base de datos  ---------------  -->
 
 
+```
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
@@ -14,10 +15,8 @@ DATABASES = {
         'PASSWORD' : 'mysql@123',
         'HOST' : 'localhost',
         'PORT' : '3306',
-
     }
-}
-
+} ```
 #### <!-- -----------------SUPERUSER  ---------------  -->
 
 - ela
