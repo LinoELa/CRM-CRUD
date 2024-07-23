@@ -27,7 +27,7 @@ class Record(models.Model):
         Si llamamos llamamos a algunos de estos records va a devolver en 
         el admin area va a devolver el first name y last name
         """
-        return (f"{self.first_name} {self.last_name}")
+        return(f"{self.first_name} {self.last_name}")
     
 
 

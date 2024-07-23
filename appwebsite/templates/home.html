@@ -7,10 +7,30 @@
 
 <div class='col-md-6 offset-md-3'> 
 
-{% comment %} Para determnar si un usuario asta logueado o no {% endcomment %}
+{% comment %} ---- COMIENZO Para determnar si un usuario asta logueado o no {% endcomment %}
 {% if user.is_authenticated  %}
 
-<h1> BIENVENIDO </h1>
+<h1> RECORDS... </h1>
+
+{% comment %} ----- COMIENZO : Logica para los records  {% endcomment %}
+
+{% if records %}
+  {% for record_query in records %}
+    {% comment %} Vamos a llamar recods por records {% endcomment %}
+    {{ record_query.first_name }} <br/>
+    {{ record_query.last_name }} <br/>
+    {{ record_query.email }} <br/>
+    {{ record_query.phone }} <br/>
+    {{ record_query.address }} <br/>
+    {{ record_query.city }} <br/>
+    {{ record_query.state }} <br/>
+    {{ record_query.zipcode }} <br/>
+  
+  {% endfor %}
+
+{% endif %}
+{% comment %} ----- FIN : Logica para los records  {% endcomment %}
+
 
 {% else %}
 
@@ -34,11 +54,10 @@
             <button type="submit" class="btn btn-secondary">Login</button>
     </form>
 
-
-
 </div>
 
 {% endif %}
+{% comment %} ----- FIN para determinar si un usuario esta loqueado o no  {% endcomment %}
 
 
 {% endblock  %}

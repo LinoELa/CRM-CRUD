@@ -17,6 +17,10 @@ from django.contrib import messages
 from .forms import SignUpForm
 
 
+# Importamos el modelo primero
+from .models import Record
+
+
 
 
 # ------------------------- HOME ----------------------------------#
@@ -25,8 +29,10 @@ from .forms import SignUpForm
 
 def home(request):
 
-    # Chekear si esta logueado - 
+    # Para que el records se vea 
+    records = Record.objects.all()
 
+    # Chekear si esta logueado - 
     #usando excepciones
 
     # Cuando postean algo por eso el metodo POST
@@ -46,9 +52,13 @@ def home(request):
             return redirect('home')
         else:
             messages.error(request, 'Hubo un error al intentar iniciar session, Porfavor Intentalo de nuevo ')
-    # Pero cuando no postean nada 
+
+    """ 
+    - Pero cuando no postean nada para que vean la pagina
     
-    return render(request, "home.html", {})
+    - Pasamos records para que puedan ve los records
+    """
+    return render(request, "home.html", {'records' : records})
     
 # --------------------------- LOGIN --------------------------------#
 

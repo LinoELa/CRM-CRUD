@@ -100,9 +100,32 @@ def __str__(self):
 
 
 
-#### <!-- -------- VER DE LOS MODELOS EN LA PAGINA WEB ------------  -->
+#### <!-- -------- VER LOS MODELOS EN LA PAGINA WEB ------------  -->
+- VIEW RECORDS ON WEBSITE
 
-- Como queremos que aparezca cuando el usuario este logueado
+- Como queremos que aparezca cuando el usuario este logueado pues tocamos un poquico def home() de view.py  y luego creamos una nueva funcion records a la que pasamos que se vea cuando el usuario no esta posteando 
+
+
+- Vamos al home.html y desde alli llamamos a los records  usando :
+    - Query Set -> CONSULTAR - a la base de datos
+
+```
+{% if records %}
+  {% for record_query in records %}
+    {% comment %} Vamos a llamar recods por records {% endcomment %}
+    {{ record_query.first_name }} <br/>
+    {{ record_query.last_name }} <br/>
+    {{ record_query.email }} <br/>
+    {{ record_query.phone }} <br/>
+    {{ record_query.address }} <br/>
+    {{ record_query.city }} <br/>
+    {{ record_query.state }} <br/>
+    {{ record_query.zipcode }} <br/>
+  
+  {% endfor %}
+
+{% endif %}
+```
 
 
 
