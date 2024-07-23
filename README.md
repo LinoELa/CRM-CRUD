@@ -16,7 +16,8 @@ DATABASES = {
         'HOST' : 'localhost',
         'PORT' : '3306',
     }
-} ```
+}
+```
 #### <!-- -----------------SUPERUSER  ---------------  -->
 
 - ela
@@ -80,5 +81,31 @@ Para hacer los login y logout
 
 
     - Revisar bien los nombres de las variables que sean los mismo, porque si no lleva a un error faltal
+
+#### <!-- -------- MODELOS  PARA LA ADMIN &  BASE DE DATOS ------------  -->
+- No hace falta que escribamos codigo para la base de datos , Django ya lo escribe 
+
+def __str__(self):
+    Hacemos un return de lo que queremo mostrar en la pantalla cuando accedamods a unos de estos record o informacion de los modelos 
+
+
+- Despues de crear el modelo lo traemos a admin.py para asi poder verlo en la seccion de admin
+
+    > from django.contrib import admin
+    from .models import Record
+    #para registrar el record en admin
+    > admin.site.register(Record)
+
+- Luego de crearlo el modelo  y vincularlo al admin,  ya se puede ir a la ala web de /admin y desde alli añadir los modelos  
+
+
+
+#### <!-- -------- VER DE LOS MODELOS EN LA PAGINA WEB ------------  -->
+
+- Como queremos que aparezca cuando el usuario este logueado
+
+
+
+
 
 
