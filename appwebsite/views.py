@@ -14,7 +14,7 @@ from django.contrib import messages
 
 
 # imprtamos la clase que esa en el forms 
-from .forms import SignUpForm
+from .forms import SignUpForm, addRecordForm
 
 
 # Importamos el modelo primero
@@ -160,10 +160,25 @@ def delete_record(request, pk):
         return redirect ('home')
 
 
+# ---------------------------- ADD & AÑADIR RECORDS -------------------------------#
 
+def add_record(request ):
+
+    form = addRecordForm(request.POST or None)
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            if form.is_valid():
+                add_record = form.save()
+                messages.success(request, "Record Añadido")
+                return redirect('home')
+        return render(request, 'add_record.html', {'form':form})
+    else:
+        messages.error(request, 'Tienes que iniciar session' )
+        return redirect ('home')
 
 
 
 # ---------------------------- LOGOUT -------------------------------#
-
+# ---------------------------- LOGOUT -------------------------------#
 # ---------------------------- LOGOUT -------------------------------#

@@ -25,5 +25,8 @@ urlpatterns = [
     # URL Para BORRAR records
     path('delete_record/<int:pk>', views.delete_record, name='delete_record'),
 
+    # URL Para AÑADIR  records
+    path('add_record', views.add_record, name='add_record'),
+
 ]
 
