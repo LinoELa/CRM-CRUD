@@ -128,6 +128,11 @@ def __str__(self):
 ```
 
 
+#### <!-- -------- BOOTSTRAP TABLE layout ------------  -->
+
+- usaremos tablas de Bootstraps para hacer que se se vea bien
+
+
 
 
 

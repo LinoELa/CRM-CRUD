@@ -10,25 +10,46 @@
 {% comment %} ---- COMIENZO Para determnar si un usuario asta logueado o no {% endcomment %}
 {% if user.is_authenticated  %}
 
-<h1> RECORDS... </h1>
-
 {% comment %} ----- COMIENZO : Logica para los records  {% endcomment %}
 
-{% if records %}
-  {% for record_query in records %}
-    {% comment %} Vamos a llamar recods por records {% endcomment %}
-    {{ record_query.first_name }} <br/>
-    {{ record_query.last_name }} <br/>
-    {{ record_query.email }} <br/>
-    {{ record_query.phone }} <br/>
-    {{ record_query.address }} <br/>
-    {{ record_query.city }} <br/>
-    {{ record_query.state }} <br/>
-    {{ record_query.zipcode }} <br/>
-  
-  {% endfor %}
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zipcode</th>
+      <th scope="col">Created At</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
 
-{% endif %}
+  <tbody>
+
+    {% if records %}
+      {% for record_query in records %}
+      <tr>
+
+        {% comment %} Vamos a llamar recods por records {% endcomment %}
+        <td>{{ record_query.first_name }} </td>
+        <td>{{ record_query.last_name }} </td>
+        <td>{{ record_query.email }} </td>
+        <td>{{ record_query.phone }} </td>
+        <td>{{ record_query.address }} </td>
+        <td>{{ record_query.city }} </td>
+        <td>{{ record_query.state }} </td>
+        <td>{{ record_query.zipcode }} </td>
+        <td>{{ record_query.ID }} </td>
+      
+      {% endfor %}
+
+    {% endif %}
+
+  </tbody>
+</table>
 {% comment %} ----- FIN : Logica para los records  {% endcomment %}
 
 
