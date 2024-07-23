@@ -5,31 +5,29 @@
 {% block content %}
 
 
-<div class='col-md-6 offset-md-3'> 
 
-{% comment %} ---- COMIENZO Para determnar si un usuario asta logueado o no {% endcomment %}
-{% if user.is_authenticated  %}
 
-{% comment %} ----- COMIENZO : Logica para los records  {% endcomment %}
+  {% comment %} ---- COMIENZO Para determnar si un usuario asta logueado o no {% endcomment %}
+  {% if user.is_authenticated  %}
 
-<table class="table table-striped table-hover table-bordered">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
-      <th scope="col">City</th>
-      <th scope="col">State</th>
-      <th scope="col">Zipcode</th>
-      <th scope="col">Created At</th>
-      <th scope="col">ID</th>
-    </tr>
-  </thead>
+  {% comment %} ----- COMIENZO : Logica para los records {% endcomment %}
 
-  <tbody>
-
-    {% if records %}
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+        <th scope="col">Created At</th>
+        <th scope="col">ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if records %}
       {% for record_query in records %}
       <tr>
 
@@ -42,43 +40,43 @@
         <td>{{ record_query.city }} </td>
         <td>{{ record_query.state }} </td>
         <td>{{ record_query.zipcode }} </td>
-        <td>{{ record_query.ID }} </td>
-      
-      {% endfor %}
+        <td>{{ record_query.id }} </td>
 
-    {% endif %}
+        {% endfor %}
 
-  </tbody>
-</table>
-{% comment %} ----- FIN : Logica para los records  {% endcomment %}
+        {% endif %}
 
-
-{% else %}
+    </tbody>
+  </table>
+  {% comment %} ----- FIN : Logica para los records {% endcomment %}
 
 
-    <h1> Login </h1>
+  {% else %}
 
-    {% comment %} para empezar a crear el form para el Login {% endcomment %}
-    <form method='POST' action={% url 'home' %} >
-        {% comment %} para ponerle mas seguridad a los hacker {% endcomment %}
-        {% csrf_token %}
 
-        {% comment %} Form {% endcomment %}
-            <div class="form-group">
-              <input type="text" class="form-control" name= 'username' placeholder='Username'>
-            </div>
-            <br/>
-            <div class="form-group">
-              <input type="password" class="form-control" name= 'password' placeholder='Password' required>
-            </div>
-            <br/>
-            <button type="submit" class="btn btn-secondary">Login</button>
-    </form>
+  <h1> Login </h1>
 
-</div>
+  {% comment %} para empezar a crear el form para el Login {% endcomment %}
+  <form method='POST' action={% url 'home' %}>
+    {% comment %} para ponerle mas seguridad a los hacker {% endcomment %}
+    {% csrf_token %}
+
+    {% comment %} Form {% endcomment %}
+    <div class="form-group">
+      <input type="text" class="form-control" name='username' placeholder='Username'>
+    </div>
+    <br />
+    <div class="form-group">
+      <input type="password" class="form-control" name='password' placeholder='Password' required>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-secondary">Login</button>
+  </form>
+
+
 
 {% endif %}
-{% comment %} ----- FIN para determinar si un usuario esta loqueado o no  {% endcomment %}
+{% comment %} ----- FIN para determinar si un usuario esta loqueado o no {% endcomment %}
 
 
 {% endblock  %}

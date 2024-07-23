@@ -130,7 +130,26 @@ def __str__(self):
 
 #### <!-- -------- BOOTSTRAP TABLE layout ------------  -->
 
-- usaremos tablas de Bootstraps para hacer que se se vea bien
+- Usaremos tablas de Bootstraps para hacer el Diseño de la pagina
+    - Home.html es desde diseñamos la pagina
+
+
+
+
+
+
+
+#### <!-- -------- RECORDS INVIDUALES  ------------  -->
+AHORA VAMOS A HACER QUE REALMENTE DECESITAMOS
+
+- Podemos AÑADIR UN RECORD
+- Hacer un click en la tabla he ir a un sitio o al record 
+- Tambien podemos Editar estos Records 
+
+
+
+Primero vamos a necesiar una url (URLs.py) para el records
+
 
 
 
