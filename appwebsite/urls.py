@@ -15,7 +15,15 @@ urlpatterns = [
     # si quiero crear una pagina separada de log in solo quitar el comentario
     # path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
+
+    #para registrar
     path('register/', views.register_user, name='register'),
-    # URL para los records
-    path('record/<int:pk>', views.customer_record, name='record')
+
+    # URL para VER los records
+    path('record/<int:pk>', views.customer_record, name='record'),
+
+    # URL Para BORRAR records
+    path('delete_record/<int:pk>', views.delete_record, name='delete_record'),
+
 ]
+
