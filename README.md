@@ -134,11 +134,6 @@ def __str__(self):
     - Home.html es desde diseñamos la pagina
 
 
-
-
-
-
-
 ##### <!-- -------- RECORDS INVIDUALES  ------------  -->
 AHORA VAMOS A HACER QUE REALMENTE DECESITAMOS
 
@@ -156,6 +151,31 @@ Primero vamos a necesiar una url (URLs.py) para el records
 Record.objects.all() --> Para todos los objetos 
 Record.objects.get(id=pk) --> Para obtener solo un objeto
 
+
+#### -- -------- FIN DEL PROYECTO ------------
+En este proyecto  el usuario puede hacer lo siguiente.
+
+- Registrar
+
+- Iniciar Session
+
+- Cerrar Session
+
+- Ver todos los Records 
+
+- Ver Record Indivisual
+
+- Añadir nuevos records  
+
+- Borrar los Records 
+
+- Actualizar los Records
+
+- Volver al inicio desde los Records
+
+El proyecto esta hecho on MYSQL como BBDD 
+
+Todo se guarda en la base de datos que esta administrado por un unico staff
 
 
 

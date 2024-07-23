@@ -169,7 +169,13 @@ def add_record(request ):
     if request.user.is_authenticated:
         if request.method == 'POST':
             if form.is_valid():
-                add_record = form.save()
+                # add_record = form.save()
+                form.save()
+
+                # ------------lo he pueso para que no apareca queno se se a usado
+                # add_record
+                # ------------lo he pueso para que no apareca queno se se a usado
+
                 messages.success(request, "Record Añadido")
                 return redirect('home')
         return render(request, 'add_record.html', {'form':form})
@@ -179,6 +185,32 @@ def add_record(request ):
 
 
 
-# ---------------------------- LOGOUT -------------------------------#
+# ---------------------------- UPDATE & ACTULIZAR RECORDS ------------------------#
+
+def update_record(request, pk):
+    if request.user.is_authenticated:
+        current_record = Record.objects.get(id=pk)
+        # instance - es para pasar el id de nuevo a la pagina
+        form = addRecordForm(request.POST or None , instance=current_record)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Record Actualizado')
+            return redirect('home')
+        
+        # En caso contrario 
+        return render(request, 'update_record.html', {'form':form})
+    
+    else:
+        messages.error(request, 'Tienes que iniciar session' )
+        return redirect ('home')
+
+    
+
+        
+
+
+
+
 # ---------------------------- LOGOUT -------------------------------#
 # ---------------------------- LOGOUT -------------------------------#

@@ -32,7 +32,7 @@
       <tr>
 
         {% comment %} Vamos a llamar records por records {% endcomment %}
-        <td>{{ record_query.first_name }} </td>
+        <td><a href ="{% url 'record' record_query.id %}" class='text-decoration-none'>{{ record_query.first_name }}</a> </td>
         <td>{{ record_query.last_name }} </td>
         <td>{{ record_query.email }} </td>
         <td>{{ record_query.phone }} </td>
