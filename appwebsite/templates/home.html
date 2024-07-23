@@ -31,7 +31,7 @@
       {% for record_query in records %}
       <tr>
 
-        {% comment %} Vamos a llamar recods por records {% endcomment %}
+        {% comment %} Vamos a llamar records por records {% endcomment %}
         <td>{{ record_query.first_name }} </td>
         <td>{{ record_query.last_name }} </td>
         <td>{{ record_query.email }} </td>
@@ -40,7 +40,7 @@
         <td>{{ record_query.city }} </td>
         <td>{{ record_query.state }} </td>
         <td>{{ record_query.zipcode }} </td>
-        <td>{{ record_query.id }} </td>
+        <td><a href ="{% url 'record' record_query.id %}"> {{ record_query.id }} </a> </td>
 
         {% endfor %}
 
@@ -52,6 +52,8 @@
 
 
   {% else %}
+
+  <div class="col-md-6 offset-md-3">
 
 
   <h1> Login </h1>
@@ -78,5 +80,6 @@
 {% endif %}
 {% comment %} ----- FIN para determinar si un usuario esta loqueado o no {% endcomment %}
 
+</div>
 
 {% endblock  %}

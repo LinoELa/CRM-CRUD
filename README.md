@@ -1,7 +1,7 @@
 # CRM-CRUD
 
 
-#### <!-- ----------------- Iniciar Secion en la base de datos  ---------------  -->
+##### <!-- ------- Iniciar Secion en la base de datos  -------  -->
 
 
 ```
@@ -18,13 +18,13 @@ DATABASES = {
     }
 }
 ```
-#### <!-- -----------------SUPERUSER  ---------------  -->
+##### <!-- -----------------SUPERUSER  ---------------  -->
 
 - ela
 - 123456789
 
 
-#### <!-- ----------------- URLs ---------------  -->
+##### <!-- ----------------- URLs ---------------  -->
 
 urlpatterns = [
     path('' , views.home, name='home'),
@@ -34,7 +34,7 @@ urlpatterns = [
 ]
 
 
-#### <!-- ----------------- AUTENTIFICACION ---------------  -->
+##### <!-- ----------------- AUTENTIFICACION ---------------  -->
 
 Para hacer los login y logout
 
@@ -46,7 +46,7 @@ Para hacer los login y logout
 
 
 
-#### <!-- -----------------INFORMACION GENERAL ---------------  -->
+##### <!-- -----------------INFORMACION GENERAL ---------------  -->
 - Podemos usar el nombre para puntar a una direccion o Url 
 - NO ASI 
     > href="{% url 'home'%}"
@@ -62,7 +62,7 @@ Para hacer los login y logout
     - Plantilla (ej : home.html)
     - URL
 
-#### <!-- ----------------- REGISTRO DE USUARIOS ---------------  -->
+##### <!-- ----------------- REGISTRO DE USUARIOS ---------------  -->
 
 - Primero creamos la url - views - template 
 
@@ -82,7 +82,7 @@ Para hacer los login y logout
 
     - Revisar bien los nombres de las variables que sean los mismo, porque si no lleva a un error faltal
 
-#### <!-- -------- MODELOS  PARA LA ADMIN &  BASE DE DATOS ------------  -->
+##### <!-- -------- MODELOS  PARA LA ADMIN &  BASE DE DATOS ------------  -->
 - No hace falta que escribamos codigo para la base de datos , Django ya lo escribe 
 
 def __str__(self):
@@ -100,7 +100,7 @@ def __str__(self):
 
 
 
-#### <!-- -------- VER LOS MODELOS EN LA PAGINA WEB ------------  -->
+##### <!-- -------- VER LOS MODELOS EN LA PAGINA WEB ------------  -->
 - VIEW RECORDS ON WEBSITE
 
 - Como queremos que aparezca cuando el usuario este logueado pues tocamos un poquico def home() de view.py  y luego creamos una nueva funcion records a la que pasamos que se vea cuando el usuario no esta posteando 
@@ -128,7 +128,7 @@ def __str__(self):
 ```
 
 
-#### <!-- -------- BOOTSTRAP TABLE layout ------------  -->
+##### <!-- -------- BOOTSTRAP TABLE layout ------------  -->
 
 - Usaremos tablas de Bootstraps para hacer el Diseño de la pagina
     - Home.html es desde diseñamos la pagina
@@ -139,16 +139,24 @@ def __str__(self):
 
 
 
-#### <!-- -------- RECORDS INVIDUALES  ------------  -->
+##### <!-- -------- RECORDS INVIDUALES  ------------  -->
 AHORA VAMOS A HACER QUE REALMENTE DECESITAMOS
 
 - Podemos AÑADIR UN RECORD
 - Hacer un click en la tabla he ir a un sitio o al record 
 - Tambien podemos Editar estos Records 
 
-
-
 Primero vamos a necesiar una url (URLs.py) para el records
+
+
+- PK = Primary Key
+- pk - tambine lo pasamos a la funcion de views.py
+
+
+Record.objects.all() --> Para todos los objetos 
+Record.objects.get(id=pk) --> Para obtener solo un objeto
+
+
 
 
 

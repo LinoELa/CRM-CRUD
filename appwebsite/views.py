@@ -55,7 +55,7 @@ def home(request):
 
     """ 
     - Pero cuando no postean nada para que vean la pagina
-    
+
     - Pasamos records para que puedan ve los records
     """
     return render(request, "home.html", {'records' : records})
@@ -130,4 +130,29 @@ def register_user(request):
 
     
 
-# ---------------------------- REGISTER  O REGISTROS-------------------------------#
+# ---------------------------- RECORDS : VISTA ----------------------#
+
+def customer_record(request, pk):
+    #si el usuario esta autenticado o ha hecho un log in
+    if request.user.is_authenticated:
+        # Buscar los Records
+        customer_record = Record.objects.get(id=pk)
+        return render(request, 'record.html', {'customer_record':customer_record})
+    #Si el usuario NO ESTA AUTENTICADO 
+    else:
+        messages.error(request, 'Tienes que iniciar session' )
+        return redirect ('home')
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ---------------------------- LOGOUT -------------------------------#
